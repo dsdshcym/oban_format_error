@@ -33,6 +33,7 @@ defmodule ObanFormatError.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:oban, "== 2.7.1"},
       {:phoenix, github: "phoenixframework/phoenix", override: true},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
