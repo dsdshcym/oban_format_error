@@ -48,8 +48,11 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :oban_format_error, Oban,
+  engine: Oban.Pro.Queue.SmartEngine,
   repo: ObanFormatError.Repo,
-  plugins: [],
+  plugins: [
+    {Oban.Pro.Plugins.Lifeline, retry_exhausted: true, rescue_interval: :timer.seconds(10)}
+  ],
   queues: [default: 10]
 
 # Import environment specific config. This must remain at the bottom
