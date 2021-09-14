@@ -15,15 +15,20 @@ defmodule ObanFormatError.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: ObanFormatError.PubSub},
       # Start the Endpoint (http/https)
-      ObanFormatErrorWeb.Endpoint
+      ObanFormatErrorWeb.Endpoint,
       # Start a worker by calling: ObanFormatError.Worker.start_link(arg)
       # {ObanFormatError.Worker, arg}
+      {Oban, oban_config()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: ObanFormatError.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  defp oban_config do
+    Application.fetch_env!(:oban_format_error, Oban)
   end
 
   # Tell Phoenix to update the endpoint configuration
