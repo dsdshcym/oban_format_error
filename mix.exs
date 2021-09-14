@@ -34,6 +34,7 @@ defmodule ObanFormatError.MixProject do
   defp deps do
     [
       {:oban, "== 2.7.1"},
+      {:oban_pro, "== 0.8.1", organization: "oban"},
       {:phoenix, github: "phoenixframework/phoenix", override: true},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
